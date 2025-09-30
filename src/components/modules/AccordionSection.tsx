@@ -38,52 +38,41 @@ const faqData = [
 
 export const AccordionSection = () => {
   return (
-    <div
-      className="flex flex-col w-full max-w-[1600px] items-center justify-center gap-32 relative bg-white"
-      data-model-id="1002:298"
-    >
-      <div className="flex flex-col items-center gap-4 relative self-stretch w-full flex-[0_0_auto] translate-y-[-1rem] animate-fade-in  ">
-        <h1 className="relative self-stretch mt-[-1.00px] font-heading-text-web-h1-48px font-[number:var(--heading-text-web-h1-48px-font-weight)] text-[#1b1743] text-[length:var(--heading-text-web-h1-48px-font-size)] text-center tracking-[var(--heading-text-web-h1-48px-letter-spacing)] leading-[var(--heading-text-web-h1-48px-line-height)] [font-style:var(--heading-text-web-h1-48px-font-style)]">
+    <section className="w-full bg-white py-20">
+      <div className="max-w-5xl mx-auto flex flex-col items-center gap-16 px-4">
+        {/* Heading */}
+        <h1 className="text-4xl md:text-5xl font-bold text-[#1b1743] text-center tracking-[-0.03em]">
           Frequently asked questions
         </h1>
-      </div>
 
-      <div className="flex-col max-w-[920px] gap-8 w-full flex-[0_0_auto] flex items-start relative translate-y-[-1rem] animate-fade-in   [--animation-delay:200ms]">
+        {/* Accordion */}
         <Accordion
           type="single"
           collapsible
           defaultValue="item-1"
           className="w-full"
         >
-          {faqData.map((faq, index) => (
-            <AccordionItem key={faq.id} value={faq.id} className="border-none">
-              <AccordionTrigger className="gap-10 self-stretch w-full flex-[0_0_auto] flex items-start relative hover:no-underline py-0 pb-5">
-                <div className="flex flex-col items-start gap-5 relative flex-1 grow">
-                  <div className="relative self-stretch mt-[-1.00px] [font-family:'Inter',Helvetica] font-semibold text-[#1b1743] text-[28px] tracking-[-0.84px] leading-10 text-left">
-                    {faq.question}
-                  </div>
-                </div>
+          {faqData.map((faq) => (
+            <AccordionItem
+              key={faq.id}
+              value={faq.id}
+              className="border-b border-gray-200"
+            >
+              <AccordionTrigger className="py-4 md:py-7 lg:py-8 text-left hover:no-underline">
+                <span className="text-lg md:text-xl font-semibold text-[#1b1743] tracking-[-0.03em]">
+                  {faq.question}
+                </span>
               </AccordionTrigger>
 
-              {faq.answer && (
-                <AccordionContent className="pb-0">
-                  <div className="relative self-stretch font-body-text-web-b1-18px font-[number:var(--body-text-web-b1-18px-font-weight)] text-[#2a2f32] text-[length:var(--body-text-web-b1-18px-font-size)] tracking-[var(--body-text-web-b1-18px-letter-spacing)] leading-[var(--body-text-web-b1-18px-line-height)] [font-style:var(--body-text-web-b1-18px-font-style)] pb-5">
-                    {faq.answer}
-                  </div>
-                </AccordionContent>
-              )}
-
-              {index < faqData.length - 1 && (
-                <img
-                  className="relative self-stretch w-full flex-[0_0_auto] object-cover pb-8"
-                  alt="Line"
-                  src="https://c.animaapp.com/mg6l8xe3KGq9W6/img/line.svg"
-                />
-              )}
+              <AccordionContent>
+                <p className="text-base text-gray-600 leading-relaxed pb-5">
+                  {faq.answer}
+                </p>
+              </AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>
       </div>
-    </div>
+    </section>
   );
 };
