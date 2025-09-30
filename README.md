@@ -1,73 +1,111 @@
-# React + TypeScript + Vite
+# Figma Task – React Tailwind Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a responsive React application built with **Vite**, **Tailwind CSS**, and **Lucide Icons**. It replicates a Figma design for a plumbing services website, including FAQ, Contact, and Footer sections. All content and constants are modularized for easy maintenance.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Table of Contents
 
-## React Compiler
+- [Figma Task – React Tailwind Project](#figma-task--react-tailwind-project)
+  - [Table of Contents](#table-of-contents)
+  - [Features](#features)
+  - [Project Structure](#project-structure)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [Accordion Section](#accordion-section)
+    - [Contact Section](#contact-section)
+    - [Footer Section](#footer-section)
+  - [Technologies](#technologies)
+  - [Scripts](#scripts)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Accordion Section:** Frequently Asked Questions with collapsible items.  
+- **Contact Section:** Hero card with heading, paragraph, and CTA button.  
+- **Footer Section:** Responsive footer with logo, social icons, navigation, and contact info.  
+- **Responsive Design:** Fully mobile and tablet optimized.  
+- **Tailwind CSS Animations:** Smooth entrance animations with delay controls.  
+- **Constants Driven:** All content (links, contact info, FAQ data) stored in `src/constants`.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Project Structure
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├─ components/
+│ └─ modules/
+│ ├─ AccordionSection.tsx
+│ ├─ Contact.tsx
+│ └─ Footer.tsx
+├─ constants/
+│ ├─ footerData.ts
+│ └─ faqData.ts
+├─ App.tsx
+└─ main.tsx
+package.json
+tailwind.config.js
+vite.config.ts
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **AccordionSection.tsx:** Displays FAQ data using Radix Accordion components.  
+- **Contact.tsx:** Card section with heading, paragraph, and booking button.  
+- **Footer.tsx:** Responsive footer using constants from `footerData.ts`.  
+- **Constants:** All reusable data like links and contact info.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## Installation
+
+1. Clone the repository
+   ```bash
+   git clone <repo-url>
+   cd figma-task
+   ```
+2. Install dependencies
+   ```bash
+   npm install
+   ```
+3. Start the development server
+   ```bash
+   npm run dev
+   ```
+4. Open http://localhost:5173
+ in your browser.
+
+
+## Usage
+
+### Accordion Section
+- Pulls FAQ data from `src/constants/faqData.ts`.
+- Each item is collapsible using Radix Accordion.
+
+### Contact Section
+- Hero card with a `Button` and `ArrowRightIcon`.
+- Styling via Tailwind and responsive padding.
+
+### Footer Section
+- Pulls navigation links and contact info from `src/constants/footerData.ts`.
+- Each contact icon is rendered dynamically.
+- Fully responsive: On tablet, navigation stacks under logo and social section.
+
+## Technologies
+
+- React 19
+- Vite 7
+- Tailwind CSS 4
+- Lucide React Icons
+- Radix UI Accordion
+- TypeScript
+- tw-animate-css for animation utilities
+
+## Scripts
+```bash
+npm run dev       # Start development server
+npm run build     # Build production files
+npm run preview   # Preview production build
+npm run lint      # Lint project
 ```
